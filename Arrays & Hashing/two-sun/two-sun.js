@@ -52,3 +52,6 @@ class Solution {
 
 let s = new Solution();
 console.log(s.twoSum([2, 7, 11, 15], 13)); // [0, 2]
+
+//o(n²) time complexity and o(1) space complexity
+//can be improved to o(n) time complexity using a hash map
