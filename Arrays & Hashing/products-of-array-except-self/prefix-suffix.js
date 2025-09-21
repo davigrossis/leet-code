@@ -36,15 +36,44 @@ class Solution {
 
         pref[0] = 1;
         suff[n - 1] = 1;
+
+        console.log('Estado inicial:');
+        console.log('nums:', nums);
+        console.log('pref inicial:', pref);
+        console.log('');
+
         for (let i = 1; i < n; i++) {
+            console.log(`Iteração ${i}:`);
+            console.log(
+                `  Calculando pref[${i}] = nums[${i - 1}] * pref[${i - 1}] = ${
+                    nums[i - 1]
+                } * ${pref[i - 1]}`
+            );
             pref[i] = nums[i - 1] * pref[i - 1];
+            console.log(`  pref[${i}] = ${pref[i]}`);
+            console.log('  pref atual:', pref);
+            console.log('');
         } // o elemento nums[i] atual não se multiplica
-        console.log(pref);
+        console.log('pref final:', pref);
+        console.log('');
+        console.log('Calculando array suff (sufixos):');
+        console.log('suff inicial:', suff);
+        console.log('');
+
         for (let i = n - 2; i >= 0; i--) {
+            console.log(`Iteração ${i}:`);
+            console.log(
+                `  Calculando suff[${i}] = nums[${i + 1}] * suff[${i + 1}] = ${
+                    nums[i + 1]
+                } * ${suff[i + 1]}`
+            );
             suff[i] = nums[i + 1] * suff[i + 1];
+            console.log(`  suff[${i}] = ${suff[i]}`);
+            console.log('  suff atual:', suff);
+            console.log('');
         } // o elemento nums[i] atual não se multiplica
 
-        console.log(suff);
+        console.log('suff final:', suff);
         for (let i = 0; i < n; i++) {
             res[i] = pref[i] * suff[i];
         } //produto de todos os elementos exceto
@@ -53,4 +82,4 @@ class Solution {
 }
 
 let s = new Solution();
-console.log(s.productExceptSelf([-1, 0, 1, 2, 3]));
+console.log(s.productExceptSelf([1, 2, 3, 4]));
